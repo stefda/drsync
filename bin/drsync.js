@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const cli = require('command-line-args');
 const usage = require('command-line-usage');
 const dcp = require('../lib/dcp');
