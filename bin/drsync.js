@@ -20,7 +20,7 @@ const usageDefinition = [
   {
     header: 'Synopsis',
     content: [
-      '$ drsync [[bold]{-f} [underline]{file=docker-compose.yml}] [bold]{-h} [underline]{host=192.168.99.100} path',
+      '$ drsync [[bold]{-f} [underline]{file=docker-compose.yml}] [[bold]{-s} [underline]{service=rsync}] [[bold]{-h} [underline]{host=192.168.99.100}] path',
       '$ drsync [bold]{--help}'
     ]
   },
