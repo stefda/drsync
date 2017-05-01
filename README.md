@@ -1,9 +1,8 @@
 # drsync
 
-Node utility to watch and sync files into a container based on a
-[Docker rsync](https://hub.docker.com/r/stefda/rsync/) image. Currently the script
-expects the container to be provisioned using a docker-compose file where it looks
-for port mapping.
+Node utility to watch and sync files into an rsync-enabled Docker container.
+
+[![Build Status](https://travis-ci.org/stefda/drsync.svg?branch=single-file-sync)](https://travis-ci.org/stefda/drsync)
 
 # Installation and usage
 
