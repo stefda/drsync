@@ -61,9 +61,9 @@ describe('rsync', function () {
     });
   });
 
-  it('should resolve with a message', () => {
+  it('should complete with a message', () => {
     return rsync('src', 'destination').then(result => {
-      expect(result).toEqual('rsync finished with code 0');
+      expect(result).toEqual('info: rsync completed');
     });
   });
 
@@ -73,7 +73,7 @@ describe('rsync', function () {
     };
 
     return rsync('src', 'destination').catch(err => {
-      expect(err).toEqual('error');
+      expect(err).toEqual('error: rsync exited with code 1');
     });
   });
 });
