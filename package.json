@@ -6,6 +6,10 @@
   "version": "1.0.0",
   "main": "./lib/drsync.js",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stefda/drsync.git"
+  },
   "bin": {
     "drsync": "./bin/drsync.js"
   },
