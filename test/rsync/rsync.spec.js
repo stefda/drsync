@@ -25,6 +25,12 @@ describe('rsync', function () {
     });
   });
 
+  it('should not set the delete flag by default', () => {
+    return rsync('src', 'destination').then(() => {
+      expect(mockClient.set.calledWith('delete')).toEqual(false);
+    });
+  });
+
   it('should set the source', () => {
     return rsync('src', 'destination').then(() => {
       expect(mockClient.source).toHaveBeenCalledWith('src');
@@ -37,33 +43,27 @@ describe('rsync', function () {
     });
   });
 
-  it('should not set the delete flag by default', () => {
-    return rsync('src', 'destination').then(() => {
-      expect(mockClient.set.calledWith('delete')).toEqual(false);
-    });
-  });
-
   it('should set custom flags if provided via options', () => {
-    return rsync('src', 'destination', { flags: 'custom' }).then(() => {
-      expect(mockClient.flags).toHaveBeenCalledWith('custom');
+    return rsync('src', 'destination', false, 'flags').then(() => {
+      expect(mockClient.flags).toHaveBeenCalledWith('flags');
     });
   });
 
   it('should not set the delete flag if requested via options', () => {
-    return rsync('src', 'destination', { delete: false }).then(() => {
+    return rsync('src', 'destination', false).then(() => {
       expect(mockClient.set.calledWith('delete')).toEqual(false);
     });
   });
 
   it('should set the delete flag if requested via options', () => {
-    return rsync('src', 'destination', { delete: true }).then(() => {
+    return rsync('src', 'destination', true).then(() => {
       expect(mockClient.set).toHaveBeenCalledWith('delete');
     });
   });
 
   it('should complete with a message', () => {
     return rsync('src', 'destination').then(result => {
-      expect(result).toEqual('info: rsync completed');
+      expect(result).toEqual('info: [sync] rsync');
     });
   });
 
@@ -73,7 +73,7 @@ describe('rsync', function () {
     };
 
     return rsync('src', 'destination').catch(err => {
-      expect(err).toEqual('error: rsync exited with code 1');
+      expect(err).toEqual('error: [1] rsync');
     });
   });
 });
