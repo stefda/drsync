@@ -1,4 +1,4 @@
-const cli = require('../../lib/cli');
+const cli = require('../../../lib/cli');
 const sinon = require('sinon');
 require('jasmine-sinon');
 

@@ -17,7 +17,7 @@ describe('rsync', function () {
   };
 
   mock('rsync', function () { return mockClient; });
-  let rsync = require('../../lib/rsync').client;
+  let rsync = require('../../../lib/rsync').client;
 
   it('should not set the flags by default', () => {
     return rsync('src', 'destination').then(() => {

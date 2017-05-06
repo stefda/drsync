@@ -1,4 +1,4 @@
-const rsyncUrl = require('../../lib/rsync').url;
+const rsyncUrl = require('../../../lib/rsync').url;
 
 describe('rsync url()', () => {
 
