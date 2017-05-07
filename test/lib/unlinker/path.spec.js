@@ -30,7 +30,7 @@ describe('path', () => {
       expect(pathArray).toEqual(['dir1', 'dir2']);
     });
   });
-  
+
   describe('#join', () => {
     it('should join root path', () => {
       const joined = path.join(['']);
@@ -45,6 +45,18 @@ describe('path', () => {
     it('should use custom separator when given', () => {
       const joined = path.join(['C:', 'dir1', 'dir2'], '\\');
       expect(joined).toEqual('C:\\dir1\\dir2\\');
+    });
+  });
+
+  describe('#common', () => {
+    it('should find common path segments', () => {
+      const common = path.common('/dir1/dir2', '/dir1/dir3');
+      expect(common).toEqual(['', 'dir1']);
+    });
+
+    it('should return an empty array if paths have no sequence of segments in common', () => {
+      const common = path.common('/dir1/dir2', 'dir1/dir3');
+      expect(common).toEqual([]);
     });
   });
 });
