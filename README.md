@@ -1,18 +1,51 @@
 # drsync
 
-Node utility to watch and sync files into a container based on a
-[Docker rsync](https://hub.docker.com/r/stefda/rsync/) image. Currently the script
-expects the container to be provisioned using a docker-compose file where it looks
-for port mapping.
+Node utility to watch and sync files over the native rsync protocol.
+
+[![Build Status](https://travis-ci.org/stefda/drsync.svg?branch=single-file-sync)](https://travis-ci.org/stefda/drsync)
+
+# Requirements
+
+drsync uses rsync for the file transfer. Linux and Mac users are sorted, Windows
+users can install rsync as part of the [cwRsync](https://itefix.net/cwrsync)
+utility.
 
 # Installation and usage
 
-Install using yarn (or npm) like so:
+Install via yarn (or npm) like so:
 
-```yarn global add git+https://github.com/stefda/drsync.git```
+```yarn global add drsync```
 
-By default, the utility looks for `docker-compose.yml` and a service called `rsync` to resolve your mapped rsync
-port. Error results if the file or service don't exist or if you don't have the 873 port mapped. Note that the script
-also assumes your docker host is ready on `192.168.99.100`.
+At the bare minimum, the utility needs host and a list of directories to sync. These
+could be provided either as options to the cli command or by creating a `drsync.yml`
+file with the options defined as shown below:
 
-You may change the default settings by passing relevant options to the script, run `drsync --help` for details.
+```yaml
+options:
+  host: 192.168.99.100
+  files:
+    - src/
+    - test/
+```
+
+Other options (and their default values) are:
+- port (873)
+- volume (volume)
+- user (nobody)
+- group (nogroup)
+- watch (false)
+
+A fully customised yaml config will look like this:
+
+```yaml
+options:
+  host: 192.168.99.100
+  port: 10873
+  volume: docker
+  user: www-data
+  group: www-group
+  watch: true
+  files:  
+    - src/
+    - test/
+```
