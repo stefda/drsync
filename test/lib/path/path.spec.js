@@ -1,4 +1,4 @@
-const path = require('../../../lib/unlinker').path;
+const path = require('../../../lib/path');
 const sinon = require('sinon');
 require('jasmine-sinon');
 
@@ -56,6 +56,11 @@ describe('path', () => {
 
     it('should return an empty array if paths have no sequence of segments in common', () => {
       const common = path.common('/dir1/dir2', 'dir1/dir3');
+      expect(common).toEqual([]);
+    });
+
+    it('should return an empty array if paths have no sequence of segments in common', () => {
+      const common = path.common('dir1/dir2', 'dir3/dir2');
       expect(common).toEqual([]);
     });
   });
