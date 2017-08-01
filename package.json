@@ -3,7 +3,7 @@
   "author": {
     "name": "David Stefan <stefda@gmail.com>"
   },
-  "version": "1.1.0",
+  "version": "1.2.0-rc1",
   "main": "./lib/drsync.js",
   "license": "MIT",
   "repository": {
@@ -23,7 +23,8 @@
     "command-line-usage": "^4.0.0",
     "js-yaml": "^3.8.3",
     "rsync": "^0.6.1",
-    "rxjs": "^5.3.1"
+    "rxjs": "^5.3.1",
+    "sleep": "^5.1.1"
   },
   "devDependencies": {
     "jasmine": "^2.6.0",
