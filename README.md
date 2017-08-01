@@ -1,14 +1,13 @@
 # drsync
 
-Node utility to watch and sync files over the native rsync protocol.
+Node utility to watch files for changes and sync them once changed over the native rsync protocol.
 
 [![Build Status](https://travis-ci.org/stefda/drsync.svg?branch=single-file-sync)](https://travis-ci.org/stefda/drsync)
 
 # Requirements
 
-drsync uses rsync for the file transfer. Linux and Mac users are sorted, Windows
-users can install rsync as part of the [cwRsync](https://itefix.net/cwrsync)
-utility.
+drsync has a hard dependency on rsync that takes care of the file transfer. Windows
+users can get rsync as part of the [cwRsync](https://itefix.net/cwrsync) utility.
 
 # Installation and usage
 
